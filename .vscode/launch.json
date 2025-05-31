@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Débogage Python",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/include/Settingator/src"
+            },
+            "console": "integratedTerminal",
+            "args": ["--mode", "test"],
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
