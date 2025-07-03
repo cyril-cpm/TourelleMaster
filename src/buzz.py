@@ -122,7 +122,10 @@ btPlayXMen = LayoutElement(IDP_BUTTON, None, "playXMen", callback=playXMen)
 btPlayDBZ = LayoutElement(IDP_BUTTON, None, "playDBZ", callback=playDBZ)
 btPlayMario = LayoutElement(IDP_BUTTON, None, "playMario", callback=playMario)
 
+def ReInit(value):
+    STR.BridgeReInitSlaves()
 
+btReInit = LayoutElement(IDP_BUTTON, None, "reinitSlave", callback=ReInit)
 
 def askQuestion(value):
     global buzzed
@@ -189,6 +192,21 @@ def initBuzzer(slave):
     if team:
         soundModule.playBuzz(team)
 
+def sendInitRequestFunc(value):
+    STR.SendInitRequest()
+
+sendInitRequestButton = LayoutElement(IDP_BUTTON, None, "SendInitRequest", callback=sendInitRequestFunc)
+
+def startBridgeInitFunc(value):
+    STR.BridgeStartInitBroadcasted(initBuzzer)
+
+def stopBridgeInitFunc(value):
+    STR.BridgeStopInitBroadcasted()
+
+
+startBridgeInitButton = LayoutElement(IDP_BUTTON, None, "StartBridgeInit", callback=startBridgeInitFunc)
+stopBridgeInitButton = LayoutElement(IDP_BUTTON, None, "StopBridgeInit", callback=stopBridgeInitFunc)
+
 
 if __name__ == "__main__":
 
@@ -200,7 +218,6 @@ if __name__ == "__main__":
 
 
 
-    STR.BridgeStartInitBroadcasted(initBuzzer)
     STR.AddNotifCallback(BUZZ_BUTTON, buzzButton)
 
     STR.AddToLayout(askQuestionBtn)
@@ -211,12 +228,21 @@ if __name__ == "__main__":
     STR.AddToLayout(btPlayDBZ)
     STR.AddToLayout(btPlayHP)
     STR.AddToLayout(btPlayDisney)
-    STR.AddToLayout(btPlayHP)
+    STR.AddToLayout(btPlayLego)
     STR.AddToLayout(btPlayMario)
     STR.AddToLayout(btPlayXMen)
     STR.AddToLayout(btPlayStarWars)
 
     STR.AddToLayout(reloadButton)
+
+    STR.AddToLayout(startBridgeInitButton)
+    STR.AddToLayout(stopBridgeInitButton)
+
+    STR.AddToLayout(sendInitRequestButton)
+
+    STR.AddToLayout(btReInit)
+
+    #STR.SendInitRequest()
 
     while display.IsRunning():
         STR.Update()

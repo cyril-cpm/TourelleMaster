@@ -26,6 +26,19 @@
             "args": ["--mode", "test"],
             "justMyCode": false,
             "cwd": "${workspaceFolder}"
+        },
+         {
+            "name": "BuzzDoor",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/buzzDoor.py",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/include/Settingator/src"
+            },
+            "console": "integratedTerminal",
+            "args": ["--mode", "test"],
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
