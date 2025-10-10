@@ -207,6 +207,13 @@ def stopBridgeInitFunc(value):
 startBridgeInitButton = LayoutElement(IDP_BUTTON, None, "StartBridgeInit", callback=startBridgeInitFunc)
 stopBridgeInitButton = LayoutElement(IDP_BUTTON, None, "StopBridgeInit", callback=stopBridgeInitFunc)
 
+def displayLayout(value):
+    if int(value):
+        STR.DisplaySlaveLayout()
+    else:
+        STR.RemoveSlaveLayout()
+
+layoutDisplayCheck = LayoutElement(IDP_CHECK, None, "DisplayLayout", callback=displayLayout)
 
 if __name__ == "__main__":
 
@@ -241,6 +248,8 @@ if __name__ == "__main__":
     STR.AddToLayout(sendInitRequestButton)
 
     STR.AddToLayout(btReInit)
+
+    STR.AddToLayout(layoutDisplayCheck)
 
     #STR.SendInitRequest()
 
