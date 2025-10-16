@@ -25,7 +25,7 @@ def reloadAll(value):
     slaves = STR.GetSlaves()
 
     for id in slaves:
-        slaves[id].SendInitRequest(id)
+        STR.SendInitRequest(None, id)
 
 reloadButton = LayoutElement(IDP_BUTTON, None, "reload", callback=reloadAll)
 
@@ -72,7 +72,9 @@ def introAButtonCB(value):
     module = STR.GetSlaveWithSetting("LEDMODULE")
 
     if module:
-        module.SendSettingUpdatesByName([("INTRO_STACK", None)])
+        module.SendSettingUpdatesByName([("INTRO_STACK", None),
+                                         ("8INTRO_FORWARD_TRANSI_RATE_TRANSITION", None),
+                                         ("9INTRO_BACKWARD_TRANSI_RATE_TRANSITION", None)])
 
 introAButton = LayoutElement(IDP_BUTTON, None, "IntroA", callback=introAButtonCB)
 
